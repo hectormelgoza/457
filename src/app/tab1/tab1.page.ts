@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Dishes } from 'src/assets/data/dishes.interface';
+import { DishesService } from '../service/dishes.service';
 
 @Component({
   selector: 'app-tab1',
@@ -6,7 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  dishes: Dishes[];
+  constructor(private dishService: DishesService) {}
 
-  constructor() {}
+  ionViewWillEnter(){
+    this.dishes = this.dishService.getFavoriteDish();
+  }
 
+  onRemoveFromFavorite(dish: Dishes){
+    this.dishService.removeDishFromFavorite(dish);
+    this.dishes = this.dishService.getFavoriteDish();
+  }
 }
