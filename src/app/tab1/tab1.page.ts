@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Dishes } from 'src/assets/data/dishes.interface';
-import { DishesService } from '../service/dishes.service';
+import { Quotes } from 'src/assets/data/quotes.interface';
+import { QuotesService } from '../service/quotes.service';
 
 @Component({
   selector: 'app-tab1',
@@ -8,15 +8,16 @@ import { DishesService } from '../service/dishes.service';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
-  dishes: Dishes[];
-  constructor(private dishService: DishesService) {}
+  quotes: Quotes[];
+  constructor(private quoteService: QuotesService) {}
 
   ionViewWillEnter(){
-    this.dishes = this.dishService.getFavoriteDish();
+    this.quotes = this.quoteService.getFavoriteQuote();
+    console.log(this.quotes);
   }
 
-  onRemoveFromFavorite(dish: Dishes){
-    this.dishService.removeDishFromFavorite(dish);
-    this.dishes = this.dishService.getFavoriteDish();
+  onRemoveFromFavorite(quote: Quotes){
+    this.quoteService.removeQuoteFromFavorite(quote);
+    this.quotes = this.quoteService.getFavoriteQuote();
   }
 }

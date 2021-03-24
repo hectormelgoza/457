@@ -1,28 +1,37 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Favorite Dishes
+      Favorite Quotes
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class='ion-padding'>
-  <ion-list *ngFor='let dish of dishes'>
-    <ion-item-sliding>
-      <ion-item [routerLink]="['/', 'dishdetail', dish.id]">
-        <ion-label>
-          <h2>{{dish.item}}</h2>
-          <p>{{dish.desc}}</p>
-        </ion-label>
-      </ion-item>
+  <ion-list *ngFor='let quote of quotes'>
 
-      <ion-item-options side='end'>
-        <ion-item-option (click) = 'onRemoveFromFavorite(dish)' color='danger'>
-          <ion-icon name='trash'></ion-icon>
-          Remove
-        </ion-item-option>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+    <ion-card >
+      <ion-card-header>
+        <p class='dishtitle'>{{quote.text}}</p>
+      </ion-card-header>
+
+      <ion-card-content>
+        <p class='favoritesPerson'><b>{{quote.person}}</b></p>
+
+        <ion-row>
+          <ion-col class='ion-text-center'>
+            <ion-button fill='clear' size='small'
+            (click)='onAddToFavorite(quote)'
+            *ngIf='!isFavorite(quote)'>Favorite</ion-button>
   
+            <ion-button fill='clear' size='small' color='danger'
+            (click)='onRemoveFromFavorite(quote)'
+            *ngIf='isFavorite(quote)'>Unfavorite</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+
+      
+
+    </ion-card>
+  </ion-list>
 </ion-content>

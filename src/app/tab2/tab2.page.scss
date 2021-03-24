@@ -1,6 +1,10 @@
-.dishtitle{
-    font-weight: bold;
+.quotePerson{
     color: black;
-    text-align: center;
-    &:before {content: '#';}
+    text-align: left;
+    margin:0px;
+    padding:0px;
+}
+
+.labelquote{
+    overflow-wrap: break-word;
 }

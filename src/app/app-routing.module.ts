@@ -8,7 +8,7 @@ const routes: Routes = [
   },
   {
     path: 'dishdetail',
-    loadChildren: () => import('./dishdetail/dishdetail.module').then( m => m.DishdetailPageModule)
+    loadChildren: () => import('./dishdetail/dishdetail.module').then( m => m.QuotedetailPageModule)
   }
 ];
 @NgModule({

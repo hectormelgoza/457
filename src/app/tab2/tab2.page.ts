@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
-import dishes from 'src/assets/data/dishes';
-import { Dishes } from 'src/assets/data/dishes.interface';
-import { DishesService } from '../service/dishes.service';
+import quotes from 'src/assets/data/quotes';
+import { Quotes } from 'src/assets/data/quotes.interface';
+import { QuotesService } from '../service/quotes.service';
 
 @Component({
   selector: 'app-tab2',
@@ -11,31 +11,31 @@ import { DishesService } from '../service/dishes.service';
 })
 export class Tab2Page implements OnInit{
 
-  dishCollection: {category: string, dishes: Dishes[]}[];
+  quoteCollection: {category: string, quotes: Quotes[]}[];
 
   constructor(
     private alertController: AlertController,
-    private dishService: DishesService
+    private quoteService: QuotesService
   ) {}
 
   ngOnInit(){
-    this.dishCollection = dishes;
+    this.quoteCollection = quotes;
   }
 
-  async onAddToFavorite(SelectedDish: Dishes){
+  async onAddToFavorite(SelectedQuote: Quotes){
     const alert = await this.alertController.create({
-      header: 'Add Dish',
+      header: 'Add Quote',
       subHeader: 'Are you sure?',
-      message: 'Are you sure you want to add the dish?',
+      message: 'Are you sure you want to add the quote?',
       buttons: [
         {
-          text: 'Yes',
+          text: 'Confirm',
           handler: () => {
-            this.dishService.addDishToFavorite(SelectedDish);
+            this.quoteService.addQuoteToFavorite(SelectedQuote);
           }
         },
         {
-          text: 'No',
+          text: 'Not Confirm',
           role: 'cancel',
           handler: () => {
             console.log('cancelled')
@@ -46,11 +46,11 @@ export class Tab2Page implements OnInit{
     await alert.present();
   }
 
-  isFavorite(dish: Dishes){
-    return this.dishService.isDishFavorite(dish);
+  isFavorite(quote: Quotes){
+    return this.quoteService.isQuoteFavorite(quote);
   }
 
-  onRemoveFavorite(dish: Dishes){
-    this.dishService.removeDishFromFavorite(dish);
+  onRemoveFavorite(quote: Quotes){
+    this.quoteService.removeQuoteFromFavorite(quote);
   }
 }

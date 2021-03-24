@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Dishes } from 'src/assets/data/dishes.interface';
-import { DishesService } from '../service/dishes.service';
+import { Quotes } from 'src/assets/data/quotes.interface';
+import { QuotesService } from '../service/quotes.service';
 
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.page.html',
   styleUrls: ['./dishdetail.page.scss'],
 })
-export class DishdetailPage implements OnInit {
+export class QuotedetailPage implements OnInit {
   id: string;
-  dish: Dishes;
+  quote: Quotes;
   constructor(private route: ActivatedRoute,
-    private dishesService: DishesService) { }
+    private quotesService: QuotesService) { }
 
   ngOnInit() {
     this.id = this.route.snapshot.paramMap.get('dishId');
-    //console.log(this.id);
-    this.dish = this.dishesService.getDish(this.id);
-    console.log(this.dish);
+    console.log(this.id);
+    this.quote = this.quotesService.getQuote(this.id);
+    console.log(this.quote);
   }
 
 }

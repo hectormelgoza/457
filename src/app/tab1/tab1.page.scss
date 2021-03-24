@@ -1,0 +1,5 @@
+.favoritesPerson{
+    color: black;
+    text-align: right;
+    &:before {content: '-';}
+}

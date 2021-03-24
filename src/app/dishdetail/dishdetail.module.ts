@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DishdetailPageRoutingModule } from './dishdetail-routing.module';
+import { QuotedetailPageRoutingModule } from './dishdetail-routing.module';
 
-import { DishdetailPage } from './dishdetail.page';
+import { QuotedetailPage } from './dishdetail.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DishdetailPageRoutingModule
+    QuotedetailPageRoutingModule
   ],
-  declarations: [DishdetailPage]
+  declarations: [QuotedetailPage]
 })
-export class DishdetailPageModule {}
+export class QuotedetailPageModule {}
